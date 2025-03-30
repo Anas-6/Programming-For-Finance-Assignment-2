@@ -1,18 +1,23 @@
+# 🏛 Course: AF3005 – Programming for Finance
+  👨‍🏫 Instructor: Dr. Usama Arshad (Assistant Professor, FSM)
  # ₿ Cryptocurrency Portfolio Tracker 
-🚀 Track your crypto portfolio in real-time with live market data!
 
-## 🌟 Features
-	🔍 Select any cryptocurrency from CoinGecko 
+## App Overview
+### 🚀 Track Users crypto portfolio in real-time with live market data!
+ 🏆 Built With
+🔹 Python 🐍 | Streamlit 🍁 | CoinGecko API 🌍 | Matplotlib & Plotly 📊
+### 🌟 Features
+	💰 Track your Crypto portfolio in multiple currencies (USD, EUR, PKR, etc.) 
  
-	💰 Track your portfolio in multiple currencies (USD, EUR, PKR, etc.) 
- 
- 	📊 Real-time price updates 
+ 	📊 Real-time Crypto price updates 
  
  	📈 Interactive pie & bar charts 
  
  	🎨 User-friendly Streamlit UI 
 
  	🍁 Deployed on Streamlit Cloud
+
+   	🔍 Select any cryptocurrency from CoinGecko 
 
 ## 🛠 How to Run
 	1. Clone this repository:  
@@ -41,8 +46,7 @@
 
 ## GitHub Repository Link
 	https://github.com/Anas-6/Programming-For-Finance-Assignment-2
-🏆 Built With
-🔹 Python 🐍 | Streamlit 🎛 | CoinGecko API 🌍 | Matplotlib & Plotly 📊
 
-🚀 Enjoy tracking your crypto portfolio! ₿💎🔥
+
+
 
