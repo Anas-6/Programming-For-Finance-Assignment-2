@@ -4,79 +4,44 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import plotly.express as px
 
-
 def get_crypto_prices(cryptos):
-    url = f'https://api.coingecko.com/api/v3/simple/price?ids={",".join(cryptos)}&vs_currencies=usd'
+    url = f'https://api.coingecko.com/api/v3/simple/price?ids={"%2C".join(cryptos)}&vs_currencies=usd'
     response = requests.get(url)
-    data = response.json()
-
-
-    prices = {}
-    for crypto in cryptos:
-        if crypto in data:
-            prices[crypto] = data[crypto].get('usd', None)
-        else:
-            prices[crypto] = None  
-
-    return prices
-
+    if response.status_code == 200:
+        return response.json()
+    return {}
 
 def calculate_portfolio_value(holdings, prices):
-    total_value = 0
-    for crypto in holdings:
-
-        price = prices.get(crypto)
-        if price is not None:
-            total_value += holdings[crypto] * price
-    return total_value
-
+    return sum(holdings[crypto] * prices.get(crypto, {}).get('usd', 0) for crypto in holdings)
 
 st.set_page_config(page_title="Cryptocurrency Portfolio Tracker", page_icon="🪙", layout="wide")
-
 st.title("🪙 Cryptocurrency Portfolio Tracker")
 st.write("### Track your cryptocurrency portfolio performance and see your portfolio value.")
 
-
 st.sidebar.header("Portfolio Details")
 
-
-cryptos = ['bitcoin', 'ethereum', 'cardano', 'dogecoin', 'litecoin']  # Add more cryptos as needed
-holdings = {}
-for crypto in cryptos:
-    holdings[crypto] = st.sidebar.number_input(f"Amount of {crypto.capitalize()} (in coins)", min_value=0, value=0)
-
+cryptos = ['bitcoin', 'ethereum', 'cardano', 'dogecoin', 'litecoin']
+holdings = {crypto: st.sidebar.number_input(f"Amount of {crypto.capitalize()} (in coins)", min_value=0.0, value=0.0) for crypto in cryptos}
 
 prices = get_crypto_prices(cryptos)
 
-
+crypto_df = pd.DataFrame([(crypto, prices.get(crypto, {}).get('usd', 'Data unavailable')) for crypto in cryptos], columns=["Cryptocurrency", "Price (USD)"])
 st.write("### Real-time Cryptocurrency Prices (USD)")
-crypto_df = pd.DataFrame(prices.items(), columns=["Cryptocurrency", "Price (USD)"])
-
-
-crypto_df['Price (USD)'] = crypto_df['Price (USD)'].apply(lambda x: f"Data unavailable" if x is None else f"${x:.2f}")
 st.write(crypto_df)
 
-
 portfolio_value = calculate_portfolio_value(holdings, prices)
-
 st.write(f"### Total Portfolio Value: ${portfolio_value:.2f}")
-
 
 portfolio_data = {"Cryptocurrency": [], "Amount": [], "Value (USD)": []}
 for crypto in cryptos:
-    if holdings[crypto] > 0 and prices.get(crypto, None) is not None:
+    if holdings[crypto] > 0 and prices.get(crypto, {}).get('usd') is not None:
         portfolio_data["Cryptocurrency"].append(crypto.capitalize())
         portfolio_data["Amount"].append(holdings[crypto])
-        portfolio_data["Value (USD)"].append(holdings[crypto] * prices[crypto])
-
+        portfolio_data["Value (USD)"].append(holdings[crypto] * prices[crypto]['usd'])
 
 portfolio_df = pd.DataFrame(portfolio_data)
-if len(portfolio_df) > 0:
-    fig = px.pie(portfolio_df, values="Value (USD)", names="Cryptocurrency", title="Portfolio Distribution")
-    st.plotly_chart(fig)
-
-
-if len(portfolio_df) > 0:
+if not portfolio_df.empty:
+    st.plotly_chart(px.pie(portfolio_df, values="Value (USD)", names="Cryptocurrency", title="Portfolio Distribution"))
     fig, ax = plt.subplots(figsize=(10, 6))
     ax.bar(portfolio_df["Cryptocurrency"], portfolio_df["Value (USD)"], color='royalblue')
     ax.set_title("Portfolio Value by Cryptocurrency")
@@ -84,6 +49,6 @@ if len(portfolio_df) > 0:
     ax.set_ylabel("Value in USD")
     st.pyplot(fig)
 
-
 st.markdown("---")
 st.write("🔹 Built with ❤️ using Streamlit | AF3005 - Programming for Finance | Instructor: Dr. Usama Arshad")
+
