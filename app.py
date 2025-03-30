@@ -40,7 +40,7 @@ def calculate_portfolio_value(holdings, prices):
 
 
 st.set_page_config(page_title="Cryptocurrency Portfolio Tracker", page_icon="🪙", layout="wide")
-st.title("🪙 Cryptocurrency Portfolio Tracker")
+st.title("₿ Cryptocurrency Portfolio Tracker")
 st.write("### Track your cryptocurrency portfolio in your preferred currency with live market data.")
 
 
