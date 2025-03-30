@@ -42,7 +42,7 @@
 
 ## Deployment Link
 	 Streamlit:
- 	https://programming-for-finance-assignment-2-gz4jogrst5ukgflwwpf3kc.streamlit.app
+ 	https://programming-for-finance-assignment-2-gz4jogrst5ukgflwwpf3kc.streamlit.app/
 
 ## GitHub Repository Link
 	https://github.com/Anas-6/Programming-For-Finance-Assignment-2
