@@ -105,4 +105,3 @@ if portfolio_data["Cryptocurrency"]:
     st.pyplot(fig)
 
 st.markdown("---")
-st.write("🔹 Built with ❤️ using Streamlit | AF3005 - Programming for Finance | Instructor: Dr. Usama Arshad")
