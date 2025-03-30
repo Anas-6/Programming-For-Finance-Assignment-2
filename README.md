@@ -1,9 +1,48 @@
-# Programming-For-Finance-Assignment-2
+ # ₿ Cryptocurrency Portfolio Tracker 
+🚀 Track your crypto portfolio in real-time with live market data!
 
-Course Name: AF3005 – Programming for Finance
-Instructor Name: Dr. Usama Arshad
-App Overview (What does the app do?)
-Installation Guide (How to run it locally?)
-Deployment Link (Streamlit app URL)
-Screenshots or a small video demo
-GitHub Repository Link
+## 🌟 Features
+	🔍 Select any cryptocurrency from CoinGecko 
+ 
+	💰 Track your portfolio in multiple currencies (USD, EUR, PKR, etc.) 
+ 
+ 	📊 Real-time price updates 
+ 
+ 	📈 Interactive pie & bar charts 
+ 
+ 	🎨 User-friendly Streamlit UI 
+
+ 	🍁 Deployed on Streamlit Cloud
+
+## 🛠 How to Run
+	1. Clone this repository:  
+		
+			git clone <your_repo_url>
+
+	2. Install dependencies:  
+		
+			pip install streamlit requests pandas matplotlib plotly
+	 		pip install -r requirements.txt
+
+	3. Run the app:  
+		
+			streamlit run app.py
+
+
+## 📸 Screenshots
+
+![1](https://github.com/user-attachments/assets/27fe0309-5058-4930-8089-6c5a6a232c02)
+![image](https://github.com/user-attachments/assets/e1474d40-5c45-449c-9646-9bb3a5d8259a)
+
+
+## Deployment Link
+	 Streamlit:
+ 	https://programming-for-finance-assignment-2-gz4jogrst5ukgflwwpf3kc.streamlit.app/
+
+## GitHub Repository Link
+	https://github.com/Anas-6/Programming-For-Finance-Assignment-2
+🏆 Built With
+🔹 Python 🐍 | Streamlit 🎛 | CoinGecko API 🌍 | Matplotlib & Plotly 📊
+
+🚀 Enjoy tracking your crypto portfolio! ₿💎🔥
+
